@@ -2,6 +2,7 @@
   <div id="app">
     {{this.$store.state.count}}
     {{this.$store.getters.newCount}}
+    {{this.$store.state.a.b.count}}
     <button @click="addCount">add</button>
   </div>
 </template>
@@ -13,8 +14,8 @@ export default Vue.extend({
   name: 'app',
   methods: {
     addCount () {
-      ((this as any).$store as any).commit('change')
-      // ((this as any).$store as any).dispatch('change')
+      // ((this as any).$store as any).commit('change')
+      ((this as any).$store as any).dispatch('change')
     }
   },
   mounted () {

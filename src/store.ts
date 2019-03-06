@@ -5,6 +5,26 @@ import Vuex from './vuex'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  modules: { // 可以给状态划分模块 // 递归
+    a: {
+      state: {
+        count: 200
+      },
+      mutations: {
+        // @ts-ignore
+        change ({state}) {
+          console.log('-----')
+        }
+      },
+      modules: {
+        b: {
+          state: {
+            count: 2
+          }
+        }
+      }
+    }
+  },
   state: { // 状态， Vue 的数据
     count: 100
   },
@@ -15,8 +35,9 @@ export default new Vuex.Store({
   },
   mutations: {
     // @ts-ignore
-    change ({state}) {
+    change (state) {
       state.count += 10
+      console.log('xxxxxxxxx')
     }
   },
   actions: {
